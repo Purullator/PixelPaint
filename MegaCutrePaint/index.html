@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+
+</head>
+<body>
+
+	<h1>MegaCutrePaint</h1>
+
+	<span>Selecciona el color</span>
+	<input type="color" id="inColor">
+
+
+	<p>Haz click en el lienzo para comenzar a pintar.</p>
+
+	<br>
+
+	<div id="lienzoPrincipal">
+
+	 
+	</div>
+
+	<br>
+	<button id="btnBorrar">BORRAR TODO</button>
+
+
+	<script>
+	
+
+		var pintar = false;
+
+		let lienzo = '';
+		for (let i = 1; i<=1000; i++) {
+			lienzo += '<div  class="lienzo ' + i + '"></div>';
+		}
+
+		let lienzoPrincipal = document.getElementById("lienzoPrincipal");
+
+		lienzoPrincipal.innerHTML = lienzo;
+
+		var divs = lienzoPrincipal.getElementsByTagName('div');
+
+
+
+		lienzoPrincipal.onclick = function(){	
+		
+		pintar = !pintar;
+
+		if (pintar == true){  
+
+			for(let d of divs)
+
+			d.onmouseenter = function(){
+				colorea(this, inColor.value);
+			  }
+			 
+
+		} else 
+			for (let d of divs) 
+				d.onmouseenter = null;
+		}
+
+
+		function colorea(elemento, color) {
+			elemento.style.backgroundColor = color;
+		}
+
+
+		btnBorrar.onclick = function() {
+			lienzoPrincipal.innerHTML = lienzo;
+			pintar = !pintar
+		}
+
+		
+
+		
+
+	</script>
+
+</body>
+</html>
